@@ -5,21 +5,12 @@
 <center>
 <h1>公众号 工具栏 添加</h1>
 </center>
+不可使用,改代码
 <form action="{{url('admin/tools/index_do')}}" method="post">
 	<div style="margin-top:5%;" class="container">
 		<table class="table">
 		  <caption>边框表格布局</caption>
 		  <thead>
-		    <tr>
-		    	<td><input type="text" name="g1" value="" placeholder="工具栏1_7"/></td>
-		    	<td><input type="text" name="g2" value="" placeholder="工具栏2_7"/></td>
-		    	<td><input type="text" name="g3" value="" placeholder="工具栏3_7"/></td>
-		    </tr>
-		    <tr>
-		    	<td><input type="text" name="f1" value="" placeholder="工具栏1_6"/></td>
-		    	<td><input type="text" name="f2" value="" placeholder="工具栏2_6"/></td>
-		    	<td><input type="text" name="f3" value="" placeholder="工具栏3_6"/></td>
-		    </tr>
 		    <tr>
 		    	<td><input type="text" name="e1" value="" placeholder="工具栏1_5"/></td>
 		    	<td><input type="text" name="e2" value="" placeholder="工具栏2_5"/></td>

@@ -49,7 +49,7 @@
                     </li>
 
                     <li>
-                        <a class="J_menuItem" href="{{url('index')}}">
+                        <a class="J_menuItem" href="{{url('admin/weixin/index')}}">
                             <i class="fa fa-home"></i>
                             <span class="nav-label">主页</span>
                         </a>
@@ -99,6 +99,14 @@
                         <a href="{{url('admin/weather/index')}}">
                             <i class="fa fa fa-bar-chart-o"></i>
                             <span class="nav-label">天气查询</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{url('admin/flock/index')}}">
+                            <i class="fa fa fa-bar-chart-o"></i>
+                            <span class="nav-label">群发</span>
                             <span class="fa arrow"></span>
                         </a>
                     </li>
