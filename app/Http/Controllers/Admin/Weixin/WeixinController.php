@@ -11,6 +11,14 @@ use App\Admin\Weixin\Resource as RS;
 class WeixinController extends Controller
 {
     /**
+     * 返回access_tokken
+     */
+    public function getAccessTokens(){
+        echo Wechat::getAccessTokens();
+    }
+
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

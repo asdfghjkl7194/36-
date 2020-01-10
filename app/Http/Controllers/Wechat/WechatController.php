@@ -22,16 +22,7 @@ class WechatController extends Controller
         $xmlObj = simplexml_load_string($wechatData);
         $openid = $xmlObj->FromUserName;
 
-        /**
-        <xml><ToUserName><![CDATA[gh_4aaaa7ecc98e]]></ToUserName>
-        <FromUserName><![CDATA[ouMSqw4gGGtbEwL1DUe7glaGkhUc]]></FromUserName>
-        <CreateTime>1578637585</CreateTime>
-        <MsgType><![CDATA[image]]></MsgType>
-        <PicUrl><![CDATA[http://mmbiz.qpic.cn/sz_mmbiz_jpg/FRnol2lXqr4NIagdFNicKXJibjfhTJkZcneZwRibEjWczejSYzlTspy4453icdyJaNCfdXa9cRWTRcPDXhCxVooib4w/0]]></PicUrl>
-        <MsgId>22600655309485858</MsgId>
-        <MediaId><![CDATA[HiHwLVGkUp8rJMNVeX4EP1xoTi2dHcJaEwmBb1hk375Pu60S29zWG3YQi-fGqCBF]]></MediaId>
-        </xml>
-         */
+       
         /**
          * 保存用户发过来的图片
          */

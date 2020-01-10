@@ -1,6 +1,8 @@
 <?php
 Route::view('/', 'index');
-Route::get('/index', 'Admin\Weixin\WeixinController@index');
+Route::get('/a', 'Admin\Weixin\WeixinController@index');	// 快捷进入
+Route::get('/getAccessTokens', 'Admin\Weixin\WeixinController@getAccessTokens');	// 获取凭证
+Route::post('/gitPull', 'Git\GitController@index');	// 自动上传
 
 
 /**
@@ -49,6 +51,10 @@ Route::prefix('/admin')->group(function(){
 			Route::get('/index_do', 'Admin\Weathe\WeatherController@index_do');
 		});
 
-
+		// 群发 admin/flock/
+		Route::prefix('/flock')->group(function(){
+			Route::get('/index', 'Admin\Flock\FlockController@index');
+			Route::post('/index_do', 'Admin\Flock\FlockController@index_do');
+		});
 	});
 });
