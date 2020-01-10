@@ -1,0 +1,104 @@
+来源:	B:\xampp\htdocs\05考试\19年\十二月December\25考试2019年12月25-26日 星期三\机试题26日A\考试总结-刘赫真好.txt
+
+1.多次决定        route里打开记事本仿①写    使用规则(一点散)去背题    确定字段
+2.创建数据库(重点回看,停止后看)    使用黑框创建数据库(重点回看,停止后看)    改.env
+3.确定要做什么    后台->登录(register)->展示    =    路由->控制器(空的user控制器)->视图
+4.创建路由分组列③    分层级第一级分组是admin    内部还有一级分组    做完登录后再加上
+5.登录成功后存入request()->session()->save()    跳转到后台index控制器(这里不需要犹豫-相信自己写好就可以3个参数如'admin/news/index')
+6.路由admin内    创建    第二级分组
+7.接下来就是    控制器->视图,	的循环增删改查
+
+①:表/库名: cate 分类
+	字段 	值 	备注
+	@c_id	11	分类id		主键加上@    要求限定规则    必须这样去做笔记
+	c_title	32	分类名称
+	c_name 	32	添加人
+	updated_at    11	修改时间		datetime		strtotime(	);转换为时间戳
+	created_at     11	添加时间		datetime		date("Y-m-d H:i:s");
+	@n_id            11	其他类id		关联字段加上@
+
+②:model:数据库
+	protected $table = '01brand';	// 表名
+	protected $primaryKey = 'brand_id';	// 字段
+	public $timestamps = true;	// 开启时间戳
+	protected $guarded = ['_token'];	// 黑名单
+
+③:web路由
+<?php
+/* index:列表展示
+ * create:添加页面
+ * store:执行添加
+ * show:展示详情页
+ * edit:展示修改
+ * update:执行修改
+ * destroy:删除
+ */
+
+Route::get('/login','admin\LoginController@login');
+Route::post('/login_do','admin\LoginController@login_do');
+Route::prefix('/admin')->group(function(){	// 后台
+	Route::prefix('/news')->group(function(){	// 新闻
+		
+	});
+	Route::prefix('/admin')->group(function(){	// 分类
+	
+	});
+});
+
+Route::prefix('/index')->group(function(){	// 前台
+	Route::prefix('/news')->group(function(){	// 新闻
+		
+	});
+	Route::prefix('/admin')->group(function(){	// 分类
+	
+	});
+});
+
+④:省略入口文件名
+Options +FollowSymLinks
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]
+
+⑤:CMD命令
+php artisan make:controller Admin/UserController 
+php artisan make:controller Admin/News/NewsController --resource
+index:列表展示	,create:添加页面	,store:执行添加	,show:展示详情页	,edit:展示修改	,update:执行修改	,destroy:删除
+
+⑥:通用
+公共文件:	app->public->name.php    改根composer.json内autoload加    ,"files":["app/public/name.php"]	可:终端重加载composer dump-auto	include('name1.php');加载同文件
+view公共:	定义文件@yield('title')    继承布局@extends('public/index')    主体内容@section('title','内容')    主体内容@section('content')...@endsection	布局layouts
+中间件:	middleware    在app->Http->Middleware同下Kernel.php内$routeMiddleware加(名称,根据上面的仿)
+规则验证:	56手册103页    不会!!!!????
+	php artisan make:request 名字    看到false改为true    写完下面的    控制器引入use App\Http\Requests\名字;    在方法的带参函数前,写上 名字public function store(StoreBlogPost $request)
+"""
+/**
+     * Get the validation rules that apply to the request.
+     * 定义规则
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            'brand_name' => 'required|unique:01brand|max:12|min:2',
+			'brand_url' => 'required',
+        ];
+    }
+    
+    /**
+	* 获取被定义验证规则的错误消息
+	* 返回指定的参数
+	* @return array
+	* @translator laravelacademy.org
+	*/
+	public function messages(){
+		return [
+			'brand_name.required'=>'品牌名称不可为空',
+			'brand_name.unique'=>'品牌名称重复',
+			'brand_name.max'=>'品牌名称最大12位',
+			'brand_name.min'=>'品牌名称最小2位',
+			'brand_url.required'=>'品牌地址不可为空',
+		];
+	}
+"""	
