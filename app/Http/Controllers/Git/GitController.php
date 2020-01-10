@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class GitController extends Controller
 {
     function index(){
-        $cmd = 'cd /data/wwwroot/default/36weixin && git pull';
-        $shell_exec($cmd);
+        $cmd = "cd /data/wwwroot/default/36weixin && git pull";
+        shell_exec($cmd);
     }
 }
