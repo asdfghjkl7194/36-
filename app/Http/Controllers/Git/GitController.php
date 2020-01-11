@@ -10,10 +10,5 @@ class GitController extends Controller
     function index(){
         $cmd = "cd /data/wwwroot/default/36weixin && git pull";
         shell_exec($cmd);
-
-        /**
-$output = shell_exec('ls');
-echo "<pre>$output</pre>"; 
-         */
     }
 }
