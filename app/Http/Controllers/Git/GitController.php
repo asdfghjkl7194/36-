@@ -11,4 +11,8 @@ class GitController extends Controller
         $cmd = "cd /data/wwwroot/default/36weixin && git pull";
         shell_exec($cmd);
     }
+
+    function returnDate(){
+        echo date('Y-m-d H:i:s')."\n";
+    }
 }

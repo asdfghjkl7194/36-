@@ -3,6 +3,7 @@ Route::view('/', 'index');
 Route::get('/a', 'Admin\Weixin\WeixinController@index');	// 快捷进入
 Route::get('/getAccessTokens', 'Admin\Weixin\WeixinController@getAccessTokens');	// 获取凭证
 Route::post('/gitPull', 'Git\GitController@index');	// 自动上传 post
+Route::get('/returnDate', 'Git\GitController@returnDate');	// 定时返回时间
 
 
 /**

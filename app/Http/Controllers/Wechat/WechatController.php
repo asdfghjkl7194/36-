@@ -18,7 +18,7 @@ class WechatController extends Controller
         // echo $_GET['echostr'];
 
         $wechatData = file_get_contents('php://input');
-        file_put_contents('log.txt', $wechatData."\n", FILE_APPEND);
+        file_put_contents('log2.txt', $wechatData."\n", FILE_APPEND);
         $xmlObj = simplexml_load_string($wechatData);
         $openid = $xmlObj->FromUserName;
 
