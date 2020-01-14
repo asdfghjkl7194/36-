@@ -37,7 +37,7 @@ class ToolsController extends Controller
                 [
                     "type"=>"view", 
                     "name"=>"签到啦", 
-                    "url"=>"https://open.weixin.qq.com/connect/oauth2/authorize?appid=".env('APPID')."&redirect_uri=".urlencode('http://1907.liuhe.run/admin/tools/signIn')."&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect"
+                    "url"=>"https://open.weixin.qq.com/connect/oauth2/authorize?appid=".env('APPID')."&redirect_uri=".urlencode('http://1907.liuhe.run/signIn')."&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect"
                 ],
             ]
         ];

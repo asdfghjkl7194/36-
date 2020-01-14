@@ -4,6 +4,7 @@ Route::get('/a', 'Admin\Weixin\WeixinController@index');	// 快捷进入
 Route::get('/getAccessTokens', 'Admin\Weixin\WeixinController@getAccessTokens');	// 获取凭证
 Route::post('/gitPull', 'Git\GitController@index');	// 自动上传 post
 Route::get('/returnDate', 'Git\GitController@returnDate');	// 定时返回时间
+Route::get('/signIn', 'Admin\Tools\ToolsController@signIn');	// 签到
 
 
 /**
@@ -44,7 +45,6 @@ Route::prefix('/admin')->group(function(){
 		Route::prefix('tools')->group(function(){
 			Route::get('/index', 'Admin\Tools\ToolsController@index');
 			Route::post('/index_do', 'Admin\Tools\ToolsController@index_do');
-			Route::get('/signIn', 'Admin\Tools\ToolsController@signIn');
 		});
 
 		// 天气类 admin/weather/
