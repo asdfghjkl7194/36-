@@ -44,6 +44,7 @@ Route::prefix('/admin')->group(function(){
 		Route::prefix('tools')->group(function(){
 			Route::get('/index', 'Admin\Tools\ToolsController@index');
 			Route::post('/index_do', 'Admin\Tools\ToolsController@index_do');
+			Route::get('/signIn', 'Admin\Tools\ToolsController@signIn');
 		});
 
 		// 天气类 admin/weather/

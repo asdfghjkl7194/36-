@@ -27,15 +27,19 @@ class WeixinController extends Controller
     {
         $rsData = RS::paginate(3);
         foreach($rsData as $k=>$v){
-            if($v->r_type != 1){
+            if($v->r_type != 1){    // 1图片    2语音   3视频
                 $url = 'https://api.weixin.qq.com/cgi-bin/media/get?access_token='.Wechat::getAccessTokens().'&media_id='.$v->media_id;
                 $data = file_get_contents($url);
                 $data = json_decode($data, true);
                 if($v->r_type == 2){
                     $rsData[$k]['r_file'] = $url;   // $data['voice_url']; // 获取不到 可以下载,气死我了
                 }elseif($v->r_type == 3){
+                    if($data['errcode'] == '40007'){
+                        $rsData[$k]['r_file'] = '视频资源过期';    // 这里本地报错所以加上了@       呵呵令牌错误了   本地环境和线上不一样,线下获取,线上不可用,线上获取线下不可用所以就成了死循环
+                    }else{
                     $rsData[$k]['r_file'] = $data['video_url'];    // 这里本地报错所以加上了@       呵呵令牌错误了   本地环境和线上不一样,线下获取,线上不可用,线上获取线下不可用所以就成了死循环
-                }
+                 }
+              }
             }
         }
         return view('admin/weixin/index', ['reData'=>$rsData, 'access_token'=>Wechat::getAccessToken()]);
